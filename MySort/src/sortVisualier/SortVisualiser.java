@@ -16,10 +16,10 @@ public class SortVisualiser {
 		sortArray = new SortArray();
 		window.add(sortArray);
 		sortArray.repaint();
+		//sortArray.shuffleArray();
 	}
 
 	public static void main(String[] args) {
 		SortVisualiser sortVisualiser = new SortVisualiser();
-		//sortVisualiser.toString();
 	}
 }
