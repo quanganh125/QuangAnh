@@ -1,5 +1,7 @@
 package sortVisualier;
 
+import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 
 public class SortVisualiser {
@@ -8,10 +10,11 @@ public class SortVisualiser {
 	private SortArray sortArray;
 
 	public SortVisualiser() {
-		window = new JFrame("Sort Visualiser");
+		window = new JFrame("Visualiser Bubble Sort");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setSize(SortArray.WIN_WIDTH, SortArray.WIN_HEIGHT);
 		window.setVisible(true);
+		window.setLocationRelativeTo(null);
 
 		sortArray = new SortArray();
 		window.add(sortArray);
@@ -19,6 +22,12 @@ public class SortVisualiser {
 	}
 
 	public static void main(String[] args) {
-		SortVisualiser sortVisualiser = new SortVisualiser();
-	}
+		EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+            	new SortVisualiser();
+            }
+        });
+    }
+	
 }
