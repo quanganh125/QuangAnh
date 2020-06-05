@@ -1,7 +1,6 @@
 package sortVisualier;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.Random;
@@ -9,6 +8,7 @@ import java.util.Random;
 import javax.swing.JPanel;
 
 import sortVisualiser.algorithms.BubbleSort;
+import sortVisualiser.algorithms.ShellSort;
 
 public class SortArray extends JPanel {
 
@@ -38,12 +38,17 @@ public class SortArray extends JPanel {
 	}
 
 	public void swapUpdate(int firstIndex, int secondIndex) {
-		
 		int temp = array[firstIndex];
-		array[firstIndex] = array[secondIndex];
-		array[secondIndex] = temp;		
+		array[firstIndex] = array[secondIndex];	
+		array[secondIndex] = temp;
 		barColours[firstIndex] = 50;
 		barColours[secondIndex] = 50;		
+		repaint();
+	}
+	
+public void setUpdate(int firstIndex, int value) {
+		array[firstIndex] = value;
+		barColours[firstIndex] = 50;		
 		repaint();
 	}
 
@@ -68,7 +73,15 @@ public class SortArray extends JPanel {
 		}
 		setBackground(Color.darkGray);
 		shuffleArray();
+		
+	}
+	
+	public void runBubbleSort() {
 		new BubbleSort().runSort(this);
+	}
+	
+	public void runShellSort() {
+		new ShellSort().runSort(this);
 	}
 
 	@Override
@@ -90,17 +103,5 @@ public class SortArray extends JPanel {
 			graphics.setColor(Color.red);
 			graphics.drawRect(0, 0, WIN_WIDTH + 10, WIN_HEIGHT + 10);
 		}
-	}
-
-	public void resetColours() {
-		for (int i = 0; i < NUM_BARS; i++) {
-			barColours[i] = 0;
-		}
-		repaint();
-	}
-
-	@Override
-	public Dimension getPreferredSize() {
-		return new Dimension(WIN_WIDTH, WIN_HEIGHT);
 	}
 }

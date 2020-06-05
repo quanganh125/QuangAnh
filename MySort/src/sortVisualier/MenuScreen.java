@@ -53,7 +53,7 @@ public class MenuScreen extends JFrame {
 		btnBubble.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new SortVisualiser();
+				new BubbleSortVisualiser();
 			}
 		});
 		btnBubble.setForeground(new Color(220, 20, 60));
@@ -62,6 +62,12 @@ public class MenuScreen extends JFrame {
 		homeView.add(btnBubble);
 		
 		JButton btnShell = new JButton("SHELL SORT");
+		btnShell.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new ShellSortVisualiser();
+			}
+		});
 		btnShell.setForeground(new Color(220, 20, 60));
 		btnShell.setBackground(new Color(222, 184, 135));
 		btnShell.setBounds(180, 140, 150, 66);
@@ -74,36 +80,4 @@ public class MenuScreen extends JFrame {
 		homeView.add(btnTower);
 	}
 
-//	private class PanelButtonMouse extends MouseAdapter {
-//		JPanel panel;
-//
-//		public PanelButtonMouse(JPanel panel) {
-//			this.panel = panel;
-//		}
-//
-//		@Override
-//		public void mouseEntered(MouseEvent e) {
-//			panel.setBackground(new Color(112, 128, 144));
-//		}
-//
-//		@Override
-//		public void mousePressed(MouseEvent e) {
-//			panel.setBackground(new Color(60, 179, 113));
-//		}
-//
-//		@Override
-//		public void mouseReleased(MouseEvent e) {
-//			panel.setBackground(new Color(112, 128, 144));
-//		}
-//
-//		@Override
-//		public void mouseExited(MouseEvent e) {
-//			panel.setBackground(new Color(47, 79, 79));
-//		}
-//		
-//		@Override
-//		public void mouseClicked(MouseEvent e) {
-//			panel.setBackground(new Color(60, 179, 113));
-//		}
-//	}
 }
