@@ -23,7 +23,7 @@ public class SortArray extends JPanel {
 	private static final int NUM_BARS = (WIN_WIDTH) / (BAR_WIDTH);
 	private int[] array;
 	private final int[] barColours;
-	int delay, actual;
+	int delay;
 
 	public void perform() {
 		repaint();
@@ -38,6 +38,7 @@ public class SortArray extends JPanel {
 	}
 
 	public void swapUpdate(int firstIndex, int secondIndex) {
+		
 		int temp = array[firstIndex];
 		array[firstIndex] = array[secondIndex];
 		array[secondIndex] = temp;		
