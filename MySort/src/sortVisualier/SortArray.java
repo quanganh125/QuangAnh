@@ -7,9 +7,6 @@ import java.util.Random;
 
 import javax.swing.JPanel;
 
-import sortVisualiser.algorithms.BubbleSort;
-import sortVisualiser.algorithms.ShellSort;
-
 public class SortArray extends JPanel {
 
 	/**
@@ -17,10 +14,10 @@ public class SortArray extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public static final int WIN_WIDTH = 1000;
-	public static final int WIN_HEIGHT = 700;
+	public static final int WIN_WIDTH = 800;
+	public static final int WIN_HEIGHT = 500;
 	private static final int BAR_WIDTH = 5;
-	private static final int NUM_BARS = (WIN_WIDTH) / (BAR_WIDTH);
+	private static final int NUM_BARS = (WIN_WIDTH-110) / (BAR_WIDTH*2);
 	private int[] array;
 	private final int[] barColours;
 	int delay;
@@ -39,16 +36,16 @@ public class SortArray extends JPanel {
 
 	public void swapUpdate(int firstIndex, int secondIndex) {
 		int temp = array[firstIndex];
-		array[firstIndex] = array[secondIndex];	
+		array[firstIndex] = array[secondIndex];
 		array[secondIndex] = temp;
 		barColours[firstIndex] = 50;
-		barColours[secondIndex] = 50;		
+		barColours[secondIndex] = 50;
 		repaint();
 	}
-	
-public void setUpdate(int firstIndex, int value) {
+
+	public void setUpdate(int firstIndex, int value) {
 		array[firstIndex] = value;
-		barColours[firstIndex] = 50;		
+		barColours[firstIndex] = 50;
 		repaint();
 	}
 
@@ -73,15 +70,7 @@ public void setUpdate(int firstIndex, int value) {
 		}
 		setBackground(Color.darkGray);
 		shuffleArray();
-		
-	}
-	
-	public void runBubbleSort() {
-		new BubbleSort().runSort(this);
-	}
-	
-	public void runShellSort() {
-		new ShellSort().runSort(this);
+
 	}
 
 	@Override
@@ -89,8 +78,8 @@ public void setUpdate(int firstIndex, int value) {
 		Graphics2D graphics = (Graphics2D) g;
 		super.paintComponent(graphics);
 		for (int x = 0; x < NUM_BARS; x++) {
-			int height = array[x] * 3;
-			int xBegin = 10 + x + (BAR_WIDTH-1) * x;
+			int height = array[x] * 6;
+			int xBegin = 10 + x + (2* BAR_WIDTH) * x;
 			int yBegin = WIN_HEIGHT - height - 50;
 
 			int val = barColours[x] * 2;

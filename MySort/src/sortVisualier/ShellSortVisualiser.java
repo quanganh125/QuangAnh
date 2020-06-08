@@ -4,8 +4,11 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
+import sortVisualiser.algorithms.ShellSort;
+
 public class ShellSortVisualiser {
 
+	private static Thread sortingThread;
 	private JFrame window;
 	private SortArray sortArray;
 
@@ -17,18 +20,19 @@ public class ShellSortVisualiser {
 		window.setLocationRelativeTo(null);
 
 		sortArray = new SortArray();
-		sortArray.runShellSort();
+		sortingThread = new Thread(new ShellSort(sortArray));
+		sortingThread.start();
 		window.add(sortArray);
 		sortArray.repaint();
 	}
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-            	new ShellSortVisualiser();
-            }
-        });
-    }
-	
+			@Override
+			public void run() {
+				new ShellSortVisualiser();
+			}
+		});
+	}
+
 }

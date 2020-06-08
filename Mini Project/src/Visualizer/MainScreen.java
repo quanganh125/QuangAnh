@@ -1,4 +1,4 @@
-package sortVisualier;
+package Visualizer;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -10,13 +10,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-public class MenuScreen extends JFrame {
+public class MainScreen extends JFrame {
 	/**
 	 * Quang Anh
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel homeView;
-	private static Thread sortingThread;
 
 	/**
 	 * Launch the application.
@@ -25,7 +24,7 @@ public class MenuScreen extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenuScreen frame = new MenuScreen();
+					MainScreen frame = new MainScreen();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,12 +36,12 @@ public class MenuScreen extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MenuScreen() {
+	public MainScreen() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 500, 337);
+		setBounds(500, 300, 500, 337);
 		setUndecorated(true);
+	
 		homeView = new JPanel();	
-		//homeView.addMouseListener(new );
 		homeView.setBackground(new Color(47, 79, 79));
 		homeView.setBorder(new LineBorder(new Color(0, 0, 128), 2));
 		setContentPane(homeView);
@@ -53,32 +52,36 @@ public class MenuScreen extends JFrame {
 		Color.setBounds(2, 2, 167, 333);
 		homeView.add(Color);
 		
-		JButton btnBubble = new JButton("BUBBLE SORT");
-		btnBubble.addMouseListener(new MouseAdapter() {
+		JButton btnSort = new JButton("SORT VISUALISER");
+		btnSort.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {	
-				 new BubbleSortVisualiser();				
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							SortVisualizer frame = new SortVisualizer();
+							frame.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
-		btnBubble.setForeground(new Color(220, 20, 60));
-		btnBubble.setBackground(new Color(222, 184, 135));
-		btnBubble.setBounds(180, 60, 150, 66);
-		homeView.add(btnBubble);
+		btnSort.setForeground(new Color(220, 20, 60));
+		btnSort.setBackground(new Color(222, 184, 135));
+		btnSort.setBounds(180, 60, 150, 66);
+		homeView.add(btnSort);
 		
-		JButton btnShell = new JButton("SHELL SORT");
-		btnShell.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				new ShellSortVisualiser();
-			}
-		});
-		btnShell.setForeground(new Color(220, 20, 60));
-		btnShell.setBackground(new Color(222, 184, 135));
-		btnShell.setBounds(180, 140, 150, 66);
-		homeView.add(btnShell);
 		
 		JButton btnTower = new JButton("HANOI TOWER");
 		btnTower.setForeground(new Color(178, 34, 34));
+		btnTower.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new SortVisualizer();
+			}
+		});
 		btnTower.setBackground(new Color(222, 184, 135));
 		btnTower.setBounds(179, 220, 150, 66);
 		homeView.add(btnTower);
