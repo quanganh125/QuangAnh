@@ -4,12 +4,10 @@ package Algorithms;
 
 public class BubbleSort implements Runnable {
 	private SortArray array;
-	int delay;
 	
 	public BubbleSort(SortArray array) {
 		// TODO Auto-generated constructor stub
 		this.array = array;
-		this.delay =20;
 	}
 	
 	@Override
@@ -22,11 +20,14 @@ public class BubbleSort implements Runnable {
 				}
 				
 				try {
-					Thread.sleep(this.delay);
+					Thread.sleep(array.getDelay());
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
 		}
+		array.sortCompleted = true;
+		array.reDraw();
+		array.sortCompleted = false;
 	}
 }

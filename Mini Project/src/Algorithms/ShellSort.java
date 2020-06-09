@@ -2,12 +2,10 @@ package Algorithms;
 
 public class ShellSort implements Runnable {
 	private SortArray array;
-	int delay;
 
 	public ShellSort(SortArray array) {
 		// TODO Auto-generated constructor stub
 		this.array = array;
-		this.delay = 20;
 	}
 
 	@Override
@@ -17,23 +15,26 @@ public class ShellSort implements Runnable {
 			for (int i = gap; i < n; i += 1) {
 				int temp = array.getValue(i), j;
 				for (j = i; j >= gap && array.getValue(j - gap) > temp; j -= gap) {
-					
-					array.setUpdate(j, array.getValue(j-gap));
+
+					array.setUpdate(j, array.getValue(j - gap));
 					try {
-						Thread.sleep(delay);
+						Thread.sleep(array.getDelay());
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 				}
-				
+
 				array.setUpdate(j, temp);
 				try {
-					Thread.sleep(delay);
+					Thread.sleep(array.getDelay());
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
 		}
+		array.sortCompleted = true;
+		array.reDraw();
+		array.sortCompleted = false;
 	}
 
 }

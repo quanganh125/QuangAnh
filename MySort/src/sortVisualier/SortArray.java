@@ -14,17 +14,13 @@ public class SortArray extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public static final int WIN_WIDTH = 800;
-	public static final int WIN_HEIGHT = 500;
+	public static final int WIN_WIDTH = 1000;
+	public static final int WIN_HEIGHT = 700;
 	private static final int BAR_WIDTH = 5;
-	private static final int NUM_BARS = (WIN_WIDTH-110) / (BAR_WIDTH*2);
+	private static final int NUM_BARS = (WIN_WIDTH-200) / (BAR_WIDTH*2);
 	private int[] array;
 	private final int[] barColours;
-	int delay;
-
-	public void perform() {
-		repaint();
-	}
+	private int delay = 20;
 
 	public int arraySize() {
 		return array.length;
@@ -70,8 +66,18 @@ public class SortArray extends JPanel {
 		}
 		setBackground(Color.darkGray);
 		shuffleArray();
-
 	}
+	
+	public void completeSort() {
+		array = new int[NUM_BARS];
+		for (int i = 1; i < NUM_BARS; i++) {
+			array[i] = i;
+			barColours[i] = 100;
+		}
+		setBackground(Color.darkGray);
+		repaint();
+	}
+	
 
 	@Override
 	public void paintComponent(Graphics g) {
@@ -79,14 +85,15 @@ public class SortArray extends JPanel {
 		super.paintComponent(graphics);
 		for (int x = 0; x < NUM_BARS; x++) {
 			int height = array[x] * 6;
-			int xBegin = 10 + x + (2* BAR_WIDTH) * x;
-			int yBegin = WIN_HEIGHT - height - 50;
+			int xBegin = 50 + x + (2* BAR_WIDTH) * x;
+			int yBegin = WIN_HEIGHT - height - 100;
 
 			int val = barColours[x] * 2;
 			if (barColours[x] > 0)
 				barColours[x] -= 10;
 			graphics.setColor(Color.white);
 			graphics.setColor(new Color(255, 255 - val, 255 - val));
+			
 			graphics.fillRect(xBegin, yBegin, BAR_WIDTH, height);
 
 			graphics.setColor(Color.red);

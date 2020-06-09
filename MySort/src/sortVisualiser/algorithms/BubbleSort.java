@@ -20,11 +20,12 @@ public class BubbleSort implements Runnable {
 				}
 				
 				try {
-					Thread.sleep(BubbleSortVisualiser.sleep);
+					Thread.sleep(BubbleSortVisualiser.delay);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
 		}
+		array.completeSort();
 	}
 }

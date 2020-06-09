@@ -11,7 +11,8 @@ public class ShellSortVisualiser {
 	private static Thread sortingThread;
 	private JFrame window;
 	private SortArray sortArray;
-
+	public static int delay = 50;
+	
 	public ShellSortVisualiser() {
 		window = new JFrame("Shell Sort");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

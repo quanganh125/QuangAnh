@@ -19,20 +19,21 @@ public class ShellSort implements Runnable {
 				int temp = array.getValue(i), j;
 				for (j = i; j >= gap && array.getValue(j - gap) > temp; j -= gap) {
 					try {
-						Thread.sleep(BubbleSortVisualiser.sleep);
+						Thread.sleep(BubbleSortVisualiser.delay);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 					array.setUpdate(j, array.getValue(j-gap));
 				}
 				try {
-					Thread.sleep(BubbleSortVisualiser.sleep);
+					Thread.sleep(BubbleSortVisualiser.delay);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 				array.setUpdate(j, temp);
 			}
 		}
+		array.completeSort();
 	}
-
+	
 }
