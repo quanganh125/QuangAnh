@@ -24,14 +24,6 @@ public class SortArray extends JPanel {
 	private int delay = 15;
 	public boolean sortCompleted = false;
 
-	public int getDelay() {
-		return delay;
-	}
-
-	public void setDelay(int delay) {
-		this.delay = delay;
-	}
-
 	public SortArray(JPanel sortJPanel) {
 		arrayWrapper = sortJPanel;
 		arrayWrapper.removeAll();
@@ -82,14 +74,6 @@ public class SortArray extends JPanel {
 		}
 	}
 
-	public int arraySize() {
-		return array.length;
-	}
-
-	public int getValue(int index) {
-		return array[index];
-	}
-
 	public void swapUpdate(int firstIndex, int secondIndex) {
 		int temp = array[firstIndex];
 		array[firstIndex] = array[secondIndex];
@@ -135,5 +119,21 @@ public class SortArray extends JPanel {
 			barColours[i] = 50;
 			reDraw();
 		}
+	}
+	
+	public int getDelay() {
+		return delay;
+	}
+
+	public void setDelay(int delay) {
+		this.delay = delay;
+	}
+	
+	public int arraySize() {
+		return array.length;
+	}
+
+	public int getValue(int index) {
+		return array[index];
 	}
 }

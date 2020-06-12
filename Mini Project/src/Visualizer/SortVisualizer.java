@@ -75,14 +75,14 @@ public class SortVisualizer extends JFrame {
 		sortPanel = new JPanel();
 		sortPanel.setBackground(Color.DARK_GRAY);
 		sortPanel.setBounds(0, 0, WIN_WIDTH, SPANEL_HEIGHT);
-		sortPanel.setBorder(new LineBorder(Color.RED));
+		sortPanel.setBorder(new LineBorder(new Color(153,180,209)));
 		sortPanel.setLayout(null);
 		contentPane.add(sortPanel);
 
 		controlPanel = new JPanel();
 		controlPanel.setBackground(Color.DARK_GRAY); // new Color(0, 139, 139));
-		controlPanel.setBounds(0, SPANEL_HEIGHT, WIN_WIDTH, CPANEL_HEIGHT - 3);
-		controlPanel.setBorder(new LineBorder(Color.RED));
+		controlPanel.setBounds(0, SPANEL_HEIGHT, WIN_WIDTH, CPANEL_HEIGHT -2);
+		controlPanel.setBorder(new LineBorder(new Color(153,180,209)));
 		contentPane.add(controlPanel);
 		controlPanel.setLayout(null);
 

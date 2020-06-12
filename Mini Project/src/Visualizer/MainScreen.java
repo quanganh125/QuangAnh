@@ -16,6 +16,7 @@ public class MainScreen extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel homeView;
+	
 
 	/**
 	 * Launch the application.
@@ -37,20 +38,20 @@ public class MainScreen extends JFrame {
 	 * Create the frame.
 	 */
 	public MainScreen() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(500, 300, 500, 337);
-		setUndecorated(true);
-	
+		//setUndecorated(true);
+		setResizable(false);
 		homeView = new JPanel();	
-		homeView.setBackground(new Color(47, 79, 79));
-		homeView.setBorder(new LineBorder(new Color(0, 0, 128), 2));
+		homeView.setBackground(Color.DARK_GRAY);//new Color(47, 79, 79));
+		homeView.setBorder(new LineBorder(new Color(153,180,209)));
 		setContentPane(homeView);
 		homeView.setLayout(null);
 		
-		JPanel Color = new JPanel();
-		Color.setBackground(new Color(0, 128, 128));
-		Color.setBounds(2, 2, 167, 333);
-		homeView.add(Color);
+		JPanel leftColor = new JPanel();
+		leftColor.setBackground(Color.gray);//new Color(0, 128, 128));
+		leftColor.setBounds(2, 2, 167, 333);
+		homeView.add(leftColor);
 		
 		JButton btnSort = new JButton("SORT VISUALISER");
 		btnSort.addMouseListener(new MouseAdapter() {
@@ -70,7 +71,7 @@ public class MainScreen extends JFrame {
 		});
 		btnSort.setForeground(new Color(220, 20, 60));
 		btnSort.setBackground(new Color(222, 184, 135));
-		btnSort.setBounds(180, 60, 150, 66);
+		btnSort.setBounds(180, 60, 150, 65);
 		homeView.add(btnSort);
 		
 		
@@ -79,11 +80,20 @@ public class MainScreen extends JFrame {
 		btnTower.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new SortVisualizer();
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							HTVisualizer frame = new HTVisualizer();
+							frame.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
 		btnTower.setBackground(new Color(222, 184, 135));
-		btnTower.setBounds(179, 220, 150, 66);
+		btnTower.setBounds(180, 170, 150, 65);
 		homeView.add(btnTower);
 	}
 

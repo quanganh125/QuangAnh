@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
+import java.awt.SystemColor;
 
 public class Test extends JFrame {
 
@@ -39,15 +40,15 @@ public class Test extends JFrame {
 	 * Create the frame.
 	 */
 	public Test() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 498, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(Color.RED));
+		panel.setBorder(new LineBorder(SystemColor.activeCaption));
 		panel.setForeground(Color.PINK);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -59,7 +60,7 @@ public class Test extends JFrame {
 			}
 		});
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Jpanel", "Jrfame", "Jbutton"}));
-		comboBox.setBounds(153, 5, 74, 21);
+		comboBox.setBounds(159, 41, 74, 21);
 		comboBox.setToolTipText("");
 		panel.add(comboBox);
 		
