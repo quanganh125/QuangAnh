@@ -17,7 +17,7 @@ public class Tower {
 		return layerSize;
 	}
 
-	public void setLayerSize(int[] layer) {
+	public void setLayer(int[] layer) {
 		this.layerSize = layer;
 	}
 

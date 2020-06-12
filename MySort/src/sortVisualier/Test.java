@@ -12,6 +12,8 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 import java.awt.SystemColor;
@@ -68,5 +70,10 @@ public class Test extends JFrame {
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setBounds(0, 0, 45, 13);
 		panel.add(lblNewLabel);
+		
+		for(int i=0;i<4;i++)
+		{
+			JOptionPane.showInputDialog("bal bla");
+		}
 	}
 }

@@ -14,7 +14,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import Algorithms.InsertionSort;
 import Algorithms.DrawTower;
+import Algorithms.HanoiTower;
 
 public class HTVisualizer extends JFrame {
 
@@ -24,7 +26,8 @@ public class HTVisualizer extends JFrame {
 	public static final int CPANEL_WIDTH = 800;
 	public static final int CPANEL_HEIGHT = 70;
 	public static final int SPANEL_HEIGHT = WIN_HEIGHT - CPANEL_HEIGHT;
-	public static int TOWER_HEIGHT = 4;
+	public static int TOWER_HEIGHT = 0;
+	private static Thread runningThread;
 
 	private JPanel contentPane;
 	public JPanel mainPanel;
@@ -94,6 +97,8 @@ public class HTVisualizer extends JFrame {
 		start.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				runningThread = new Thread(new HanoiTower(myTower));
+				runningThread.start();
 			}
 		});
 		start.setBounds(671, 35, 90, 25);

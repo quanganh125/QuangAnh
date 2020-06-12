@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-import Algorithms.BubbleSort;
+import Algorithms.InsertionSort;
 import Algorithms.ShellSort;
 import Algorithms.SortArray;
 
@@ -40,7 +40,7 @@ public class SortVisualizer extends JFrame {
 	private JButton startSort;
 
 	private SortArray sortArray;
-	private boolean bubbleSort = true;
+	private boolean insertion = true;
 
 	/**
 	 * Launch the application.
@@ -102,14 +102,14 @@ public class SortVisualizer extends JFrame {
 		startSort.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (bubbleSort) {
-					sortingThread = new Thread(new BubbleSort(sortArray));
+				if (insertion) {
+					sortingThread = new Thread(new InsertionSort(sortArray));
 				} else
 					sortingThread = new Thread(new ShellSort(sortArray));
 				sortingThread.start();
 			}
 		});
-		startSort.setBounds(582, 25, 90, 25);
+		startSort.setBounds(602, 25, 90, 25);
 		controlPanel.add(startSort);
 
 		JComboBox<String> boxSpeed = new JComboBox<String>();
@@ -134,16 +134,16 @@ public class SortVisualizer extends JFrame {
 		controlPanel.add(lblNewLabel);
 
 		JComboBox<String> boxAlgorithms = new JComboBox<String>();
-		boxAlgorithms.setModel(new DefaultComboBoxModel<String>(new String[] { "Bubble Sort", "Shell Sort" }));
+		boxAlgorithms.setModel(new DefaultComboBoxModel<String>(new String[] { "Insertion Sort", "Shell Sort" }));
 		boxAlgorithms.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (boxAlgorithms.getSelectedItem() == "Bubble Sort")
-					bubbleSort = true;
+				if (boxAlgorithms.getSelectedItem() == "Insertion Sort")
+					insertion = true;
 				else
-					bubbleSort = false;
+					insertion = false;
 			}
 		});
-		boxAlgorithms.setBounds(480, 25, 100, 25);
+		boxAlgorithms.setBounds(480, 25, 120, 25);
 		controlPanel.add(boxAlgorithms);
 	}
 }
